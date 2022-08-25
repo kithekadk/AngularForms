@@ -1,0 +1,22 @@
+<form #regForm="ngForm" (ngSubmit)="create(regForm.value)">
+    <label for="username">username</label><br>
+    <input type="text" name="username"  ngModel required><br>
+    <label for="email">Email</label><br>
+    <input type="email" name="email" required ngModel><br><br>
+    <label for="">Address</label><br>
+    <div nModelGroup="address">
+        <label for="address">country</label>
+        <input type="text" required name="country" #country ngModel>
+        <!-- <p *ngIf="!country.valid && country.touched">
+            input valid data in country field
+        </p> -->
+        <label for="address">region</label>
+        <input type="text" required name="region" ngModel>
+        <label for="address">district</label>
+        <input type="text" required name="district" ngModel>
+    </div><br>
+
+    <label for="phone">Phone number</label><br>
+    <input type="number" required name="phone" ngModel><br>
+    <input [disabled]="!regForm.valid" type="submit" value="Submit">
+</form>

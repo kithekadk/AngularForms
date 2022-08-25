@@ -1,0 +1,64 @@
+{{title}}
+
+<div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="">Username</label><br>
+            <input type="text" formControlName='username'>
+            <p></p>
+        </div>
+        <div>
+            <label for="">Email</label><br>
+            <input type="text" formControlName='email'>
+            <p></p>
+        </div>
+        <div>
+            <label for="">Language</label><br>
+            <input type="text" formControlName='language'>
+            <p></p>
+        </div>
+        <div>
+            <label for="">Level</label><br>
+            <select formControlName="level">
+                <option *ngFor="let level of level">{{level}}</option>
+            </select>
+            <p></p>
+        </div>
+        <div formGroupName="address"> 
+            
+            <label for="">Address</label><br>
+            <label for="">Country</label>
+            <input type="text" formControlName="country">
+            
+            <label for="">Region</label>
+            <input type="text" formControlName="region">
+            
+            <label for="">County</label>
+            <input type="text" formControlName="county">
+            
+        </div><br>
+        
+        <div formArrayName="hobbies">
+            <label for="">Hobbies</label><br>
+            <button type="button" (click)="addHobby()">Add hobby</button>
+            <div *ngFor="let control of getHobby(); let i= index">
+                <input type="text" [formControlName]="i">
+                <p (click)="removeHobby(i)">X</p>
+            </div>
+            
+        </div>
+
+        <div formArrayName="skills">
+            <label for="">SKILLS</label><br>
+            <button type="button" (click)="addSkill()">Add a skill</button><br>
+            <div *ngFor="let control of getSkills(); let i = index">
+                <div>
+                    <input type="text" [formControlName]="i">
+                    <p (click)="removeSkill(i)">X</p>
+                </div>
+            </div>
+            
+        </div>
+        <button type="submit">SUBMIT</button>
+    </form>
+</div>
